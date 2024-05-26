@@ -1,37 +1,38 @@
-import React from "react";
 import { Badge, Navbar, Typography } from "@/materialExports";
 import { Flex } from "@/chakraExports";
 import NavList from "./navBar-components/NavListItems";
 import CollapseCS from "./navBar-components/CollapseCS";
 import IconBtnCs from "./navBar-components/IconBtnCs";
 import { IoMdCart } from "react-icons/io";
-
 import { FaFacebook, FaInstagram, FaGithub, FaTwitter } from "react-icons/fa6";
 import { MdContactSupport } from "react-icons/md";
 import Link from "next/link";
+import SideBarCC from "./navBar-components/SideBarCC";
 
 const NavBar = () => {
   return (
-    <Navbar className="bg-mainclr !min-w-[100vw] border-0 rounded-none px-4 py-2 lg:px-8 lg:py-4  text-white">
-      <Flex justifyContent="space-between" alignItems="center" p="3">
-        <Flex gap="2" alignItems="center">
+    <Navbar className="shadow-lg shadow-mainclr dark:shadow-secClr bg-mainclr dark:bg-secClr !min-w-[100vw] border-0 rounded-none px-4 py-2 lg:px-8 lg:py-4  text-white dark:text-gray-300">
+      <Flex justifyContent="space-between" alignItems="center" p="2">
+        <Flex columnGap="2" alignItems="center">
           <Typography variant="paragraph">Follow us on </Typography>
 
-          <FaFacebook className="cursor-pointer text-xl hover:text-blue-800" />
-          <FaInstagram className="cursor-pointer text-xl hover:text-[#fbad50]" />
-          <FaTwitter className="cursor-pointer text-xl hover:text-blue-300" />
-          <FaGithub className="cursor-pointer text-xl hover:text-black" />
+          <FaFacebook className="cursor-pointer text-lg hover:text-blue-800" />
+          <FaInstagram className="cursor-pointer text-lg hover:text-[#fbad50]" />
+          <FaTwitter className="cursor-pointer text-lg hover:text-blue-300" />
+          <FaGithub className="cursor-pointer text-lg hover:text-black" />
         </Flex>
         <Flex gap="1" alignItems="center">
-          <a className="cursor-pointer">Login</a>|
-          <a className="cursor-pointer">register</a>|
-          <a className="cursor-pointer">support</a>
+          <a className="cursor-pointer text-sm">Login</a>|
+          <a className="cursor-pointer text-sm">register</a>|
+          <a className="cursor-pointer text-sm">support</a>
           <MdContactSupport />
         </Flex>
       </Flex>
       <hr />
       <div className="relative mx-auto flex items-center justify-between mt-4">
         <Flex alignItems="center" gap="1">
+          <SideBarCC />
+
           <Link href="/" className=" hover:text-secClr cursor-pointer ml-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +40,7 @@ const NavBar = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-12"
+              className="size-10"
             >
               <path
                 strokeLinecap="round"
@@ -51,7 +52,7 @@ const NavBar = () => {
           <Typography
             as={Link}
             href="/"
-            variant="h3"
+            variant="h4"
             className="mr-4  cursor-pointer py-1.5 font-bold hover:text-secClr "
           >
             RSA-Market

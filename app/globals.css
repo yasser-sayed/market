@@ -7,7 +7,7 @@
 a {
   color: red;
   font-family: Merriweather !important;
-  @apply hover:text-secClr;
+  @apply hover:text-secClr dark:hover:text-mainclr;
 }
 
 * {

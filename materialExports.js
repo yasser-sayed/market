@@ -8,7 +8,6 @@ import {
   Collapse,
   MenuItem,
   Badge,
-  Input,
 } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import store from "./redux-system/store";
@@ -24,5 +23,4 @@ export {
   Collapse,
   MenuItem,
   Badge,
-  Input,
 };

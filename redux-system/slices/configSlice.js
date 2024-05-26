@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const data = {
   openNav: false,
+  theme: true,
 };
 
 const configSlice = createSlice({
@@ -11,9 +12,12 @@ const configSlice = createSlice({
     setOpenNav: (state, { payload }) => {
       state.openNav = payload;
     },
+    setTheme: (state, { payload }) => {
+      state.theme = payload;
+    },
   },
 });
 
 export const config = configSlice.reducer;
 
-export const { setOpenNav } = configSlice.actions;
+export const { setOpenNav, setTheme } = configSlice.actions;
