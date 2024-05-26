@@ -2,6 +2,7 @@ import { ThemeProvider, Provider, store } from "@/materialExports";
 import { ChakraProvider } from "@/chakraExports";
 import React from "react";
 import NavBar from "./NavBar";
+import ArrowBtn from "./ArrowBtn";
 
 const MainLayout = ({ children }) => {
   return (
@@ -12,6 +13,8 @@ const MainLayout = ({ children }) => {
             <NavBar />
 
             {children}
+
+            <ArrowBtn />
           </Provider>
         </ChakraProvider>
       </ThemeProvider>

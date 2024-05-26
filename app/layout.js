@@ -9,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className="font-[Merriweather]">
+      <body
+        suppressHydrationWarning={true}
+        className="font-[Merriweather] text-white dark:text-gray-300"
+      >
         <MainLayout>{children}</MainLayout>
       </body>
     </html>

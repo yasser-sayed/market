@@ -10,6 +10,9 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        cartimg: "url('@/assets/shopping-cart.png')",
+      },
       colors: {
         mainclr: "#0a93aacc",
         secClr: "#024955",

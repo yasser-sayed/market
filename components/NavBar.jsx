@@ -1,30 +1,59 @@
-import { Badge, Navbar, Typography } from "@/materialExports";
+import { Navbar, Typography } from "@/materialExports";
 import { Flex } from "@/chakraExports";
 import NavList from "./navBar-components/NavListItems";
 import CollapseCS from "./navBar-components/CollapseCS";
 import IconBtnCs from "./navBar-components/IconBtnCs";
-import { IoMdCart } from "react-icons/io";
 import { FaFacebook, FaInstagram, FaGithub, FaTwitter } from "react-icons/fa6";
 import { MdContactSupport } from "react-icons/md";
 import Link from "next/link";
 import SideBarCC from "./navBar-components/SideBarCC";
+import CartHoverCC from "./navBar-components/CartHoverCC";
 
 const NavBar = () => {
   return (
-    <Navbar className="shadow-lg shadow-mainclr dark:shadow-secClr bg-mainclr dark:bg-secClr !min-w-[100vw] border-0 rounded-none px-4 py-2 lg:px-8 lg:py-4  text-white dark:text-gray-300">
+    <Navbar className="shadow-lg shadow-mainclr dark:shadow-secClr bg-mainclr dark:bg-secClr !min-w-[100%] border-0 rounded-none px-4 py-2 lg:px-8 lg:py-4  text-white dark:text-gray-300">
       <Flex justifyContent="space-between" alignItems="center" p="2">
         <Flex columnGap="2" alignItems="center">
           <Typography variant="paragraph">Follow us on </Typography>
-
-          <FaFacebook className="cursor-pointer text-lg hover:text-blue-800" />
-          <FaInstagram className="cursor-pointer text-lg hover:text-[#fbad50]" />
-          <FaTwitter className="cursor-pointer text-lg hover:text-blue-300" />
-          <FaGithub className="cursor-pointer text-lg hover:text-black" />
+          <Typography
+            className="cursor-pointer text-lg !hover:text-blue-800"
+            as="a"
+            href="https://www.facebook.com/profile.php?id=100027507352759"
+            target="_blank"
+          >
+            <FaFacebook />
+          </Typography>{" "}
+          <Typography
+            className="cursor-pointer text-lg !hover:text-[#FD03BD]"
+            as="a"
+            href="https://www.instagram.com/yaasser_sayed/"
+            target="_blank"
+          >
+            <FaInstagram />
+          </Typography>{" "}
+          <Typography
+            className="cursor-pointer text-lg !hover:text-blue-300"
+            as="a"
+            href="https://x.com/Yasser_Sayed952"
+            target="_blank"
+          >
+            <FaTwitter />
+          </Typography>{" "}
+          <Typography
+            className="cursor-pointer text-lg !hover:text-black"
+            as="a"
+            href="https://github.com/yasser-sayed"
+            target="_blank"
+          >
+            <FaGithub />
+          </Typography>{" "}
         </Flex>
         <Flex gap="1" alignItems="center">
           <a className="cursor-pointer text-sm">Login</a>|
           <a className="cursor-pointer text-sm">register</a>|
-          <a className="cursor-pointer text-sm">support</a>
+          <Link href="/support" className="cursor-pointer text-sm">
+            support
+          </Link>
           <MdContactSupport />
         </Flex>
       </Flex>
@@ -62,11 +91,7 @@ const NavBar = () => {
           <NavList />
         </div>
 
-        <Link href="/cart">
-          <Badge color="light-blue" content="1">
-            <IoMdCart className="text-[2.3rem]" />
-          </Badge>
-        </Link>
+        <CartHoverCC />
 
         <IconBtnCs />
       </div>
@@ -77,21 +102,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-// <ul>
-// <li>
-//   <Link href={`/`}>home</Link>
-// </li>
-// <li>
-//   <Link href={`/category/1`}>category</Link>
-// </li>
-// <li>
-//   <Link href={`/product/1`}>product</Link>
-// </li>
-// <li>
-//   <Link href={`/search/1`}>search</Link>
-// </li>
-// <li>
-//   <Link href={`/cart`}>cart</Link>
-// </li>
-// </ul>
