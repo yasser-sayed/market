@@ -19,7 +19,12 @@ const CartHoverCC = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <Menu open={openMenu} handler={setOpenMenu} allowHover>
+    <Menu
+      placement="bottom-end"
+      open={openMenu}
+      handler={setOpenMenu}
+      allowHover
+    >
       <MenuHandler>
         <Link href="/cart">
           <Badge color="light-blue" content="1">
@@ -27,11 +32,12 @@ const CartHoverCC = () => {
           </Badge>
         </Link>
       </MenuHandler>
-      <MenuList className="hidden h-[36rem]  overflow-visible lg:flex flex-col border-2 !p-0 border-mainclr dark:border-secClr rounded-lg">
-        <Flex direction="column" className="!border-0">
+      <MenuList className="hidden h-[28rem] w-[23rem] overflow-visible lg:flex flex-col border-2 !p-0 border-mainclr dark:border-secClr rounded-lg">
+        <Flex direction="column" className="!border-0 !outline-0 select-none	">
           <Typography
+            color="white"
             variant="h4"
-            className="text-mainClr dark:text-secClr py-6 bg-mainclr opacity-50 border-b-2 border-mainclr dark:border-secClr"
+            className="text-center text-mainclr dark:text-secClr py-6 bg-mainclr dark:bg-secClr bg-opacity-30 border-b-2 border-mainclr dark:border-secClr"
           >
             Recenlty Added Products
           </Typography>
@@ -40,6 +46,7 @@ const CartHoverCC = () => {
             direction="column"
             alignItems="center"
             justifyContent="space-evenly"
+            pb="3"
           >
             <Image
               src={cartImg}

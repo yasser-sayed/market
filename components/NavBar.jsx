@@ -12,11 +12,17 @@ import CartHoverCC from "./navBar-components/CartHoverCC";
 const NavBar = () => {
   return (
     <Navbar className="shadow-lg shadow-mainclr dark:shadow-secClr bg-mainclr dark:bg-secClr !min-w-[100%] border-0 rounded-none px-4 py-2 lg:px-8 lg:py-4  text-white dark:text-gray-300">
-      <Flex justifyContent="space-between" alignItems="center" p="2">
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        flexWrap="wrap"
+        gap="2"
+        p="2"
+      >
         <Flex columnGap="2" alignItems="center">
           <Typography variant="paragraph">Follow us on </Typography>
           <Typography
-            className="cursor-pointer text-lg !hover:text-blue-800"
+            className="cursor-pointer text-lg hover:!text-blue-800"
             as="a"
             href="https://www.facebook.com/profile.php?id=100027507352759"
             target="_blank"
@@ -24,7 +30,7 @@ const NavBar = () => {
             <FaFacebook />
           </Typography>{" "}
           <Typography
-            className="cursor-pointer text-lg !hover:text-[#FD03BD]"
+            className="cursor-pointer text-lg hover:!text-[#FD03BD]"
             as="a"
             href="https://www.instagram.com/yaasser_sayed/"
             target="_blank"
@@ -32,7 +38,7 @@ const NavBar = () => {
             <FaInstagram />
           </Typography>{" "}
           <Typography
-            className="cursor-pointer text-lg !hover:text-blue-300"
+            className="cursor-pointer text-lg hover:!text-blue-300"
             as="a"
             href="https://x.com/Yasser_Sayed952"
             target="_blank"
@@ -40,7 +46,7 @@ const NavBar = () => {
             <FaTwitter />
           </Typography>{" "}
           <Typography
-            className="cursor-pointer text-lg !hover:text-black"
+            className="cursor-pointer text-lg hover:!text-black"
             as="a"
             href="https://github.com/yasser-sayed"
             target="_blank"

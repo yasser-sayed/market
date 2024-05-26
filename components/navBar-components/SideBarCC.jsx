@@ -41,7 +41,7 @@ const SideBarCC = () => {
       </Typography>
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
-        <DrawerContent className="bg-mainclr dark:bg-secClr">
+        <DrawerContent bg="unset" className="!bg-mainclr dark:!bg-secClr">
           <DrawerHeader borderBottomWidth="1px" py="12">
             <DrawerCloseButton />
             <Flex alignItems="center" gap="3" direction="column">
