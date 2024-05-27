@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { TbMenuDeep } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
+import ThemeCC from "./ThemeCC";
 
 const SideBarCC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,6 +46,7 @@ const SideBarCC = () => {
           <DrawerHeader borderBottomWidth="1px" py="12">
             <DrawerCloseButton />
             <Flex alignItems="center" gap="3" direction="column">
+              <ThemeCC />
               <Link href="/" className=" hover:text-secClr cursor-pointer ml-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

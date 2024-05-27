@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoMdCart } from "react-icons/io";
-import cartImg from "@/assets/shopping-cart.png";
+import cartImg from "@/assets/cartImg.png";
 import Image from "next/image";
 import { Flex } from "@chakra-ui/react";
 
@@ -37,7 +37,7 @@ const CartHoverCC = () => {
           <Typography
             color="white"
             variant="h4"
-            className="text-center text-mainclr dark:text-secClr py-6 bg-mainclr dark:bg-secClr bg-opacity-30 border-b-2 border-mainclr dark:border-secClr"
+            className="text-center bg-opacity-90 dark:bg-opacity-20 text-mainclr dark:text-secClr py-6 bg-mainclr dark:bg-secClr  border-b-2 border-mainclr dark:border-secClr"
           >
             Recenlty Added Products
           </Typography>
@@ -45,15 +45,15 @@ const CartHoverCC = () => {
           <Flex
             direction="column"
             alignItems="center"
-            justifyContent="space-evenly"
-            pb="3"
+            justifyContent="space-around"
+            className="h-[22.5rem]"
           >
             <Image
               src={cartImg}
               width={0}
               height={0}
               alt="Picture of the author"
-              className="h-1/4 w-auto"
+              className="h-2/5 w-auto"
             />
 
             <Typography variant="paragraph">No Products Yet!</Typography>
