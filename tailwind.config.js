@@ -16,6 +16,8 @@ module.exports = withMT({
       colors: {
         mainclr: "#0a93aacc",
         secClr: "#024955",
+        thirdClr: "#EAEAEA",
+        forthClr: "#20222F",
       },
       screens: {
         sm: "640px",
