@@ -37,7 +37,7 @@ const CartHoverCC = () => {
           <Typography
             color="white"
             variant="h4"
-            className="text-center bg-opacity-20 dark:bg-opacity-20 text-mainclr dark:text-secClr py-6 bg-mainclr dark:bg-secClr  border-b-2 border-mainclr dark:border-secClr"
+            className="text-center !bg-opacity-10 dark:!bg-opacity-20 text-mainclr dark:text-secClr py-6 bg-mainclr dark:bg-secClr  border-b-2 border-mainclr dark:border-secClr"
           >
             Recenlty Added Products
           </Typography>
