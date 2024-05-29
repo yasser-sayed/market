@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className="font-[Merriweather] text-white dark:text-gray-300"
+        className="font-[Merriweather] text-white dark:text-gray-300 dark:bg-forthClr dark:bg-opacity-95 bg-thirdClr"
       >
         <MainLayout>{children}</MainLayout>
       </body>

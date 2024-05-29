@@ -9,7 +9,7 @@ const category = ({ params: { categName } }) => {
       direction={"column"}
       justifyContent="center"
       alignItems="center"
-      className="  px-4 md:px-8 lg:px-10 my-6 dark:bg-forthClr dark:bg-opacity-95"
+      className="  px-4 md:px-8 lg:px-10 my-6 "
       gap="8"
     >
       <Typography
