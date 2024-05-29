@@ -16,6 +16,7 @@ const MainLayout = ({ children }) => {
             {children}
 
             <ArrowBtn />
+            <SecSideBtn />
           </Provider>
         </ChakraProvider>
       </ThemeProvider>
