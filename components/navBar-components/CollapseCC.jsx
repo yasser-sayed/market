@@ -2,11 +2,11 @@
 
 import React, { useEffect } from "react";
 import { Collapse } from "@/materialExports";
-import NavList from "./NavListItems";
+import NavList from "./NavListSC";
 import { useSelector } from "react-redux";
 import { setOpenNav } from "@/redux-system/slices/configSlice";
 
-const CollapseCS = () => {
+const CollapseCC = () => {
   const { openNav } = useSelector((state) => state.config);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const CollapseCS = () => {
   );
 };
 
-export default CollapseCS;
+export default CollapseCC;

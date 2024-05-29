@@ -5,7 +5,7 @@ import { IconButton } from "@/materialExports";
 import { setOpenNav } from "@/redux-system/slices/configSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const IconBtnCs = () => {
+const IconBtnCC = () => {
   const { openNav } = useSelector((state) => state.config);
   const dispatch = useDispatch();
 
@@ -50,4 +50,4 @@ const IconBtnCs = () => {
   );
 };
 
-export default IconBtnCs;
+export default IconBtnCC;

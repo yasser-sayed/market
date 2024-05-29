@@ -1,13 +1,13 @@
 import { Navbar, Typography } from "@/materialExports";
-import { Flex } from "@/chakraExports";
-import NavList from "./navBar-components/NavListItems";
-import CollapseCS from "./navBar-components/CollapseCS";
-import IconBtnCs from "./navBar-components/IconBtnCs";
+import NavListSC from "./navBar-components/NavListSC";
+import CollapseCC from "./navBar-components/CollapseCC";
+import IconBtnCC from "./navBar-components/IconBtnCC";
 import { FaFacebook, FaInstagram, FaGithub, FaTwitter } from "react-icons/fa6";
 import { MdContactSupport } from "react-icons/md";
 import Link from "next/link";
 import SideBarCC from "./navBar-components/SideBarCC";
 import CartHoverCC from "./navBar-components/CartHoverCC";
+import { Flex } from "@chakra-ui/react";
 
 const NavBar = () => {
   return (
@@ -94,15 +94,15 @@ const NavBar = () => {
           </Typography>
         </Flex>
         <div className="hidden lg:block grow px-12">
-          <NavList />
+          <NavListSC />
         </div>
 
         <CartHoverCC />
 
-        <IconBtnCs />
+        <IconBtnCC />
       </div>
 
-      <CollapseCS />
+      <CollapseCC />
     </Navbar>
   );
 };

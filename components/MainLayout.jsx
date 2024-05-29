@@ -3,6 +3,7 @@ import { ChakraProvider } from "@/chakraExports";
 import React from "react";
 import NavBar from "./NavBar";
 import ArrowBtn from "./ArrowBtn";
+import SecSideBtn from "./SecSideBtn";
 
 const MainLayout = ({ children }) => {
   return (

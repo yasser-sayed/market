@@ -2,9 +2,9 @@
 
 import { IconButton } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import { MdKeyboardArrowUp } from "react-icons/md";
+import { TbMenuDeep } from "react-icons/tb";
 
-const ArrowBtn = () => {
+const SecSideBtn = ({ isOpen, onOpen }) => {
   const [scrollY, setScrollY] = useState(0);
 
   const handleScroll = (e) => {
@@ -18,19 +18,17 @@ const ArrowBtn = () => {
   }, []);
 
   return (
-    <div className="rounded-full fixed bottom-4 !right-4">
+    <div className="rounded-full relative bottom-4 !left-4">
       <IconButton
-        hidden={!scrollY}
+        hidden={isOpen}
         className="rounded-full text-2xl duration-150 bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
-        title="go up"
-        onClick={() => {
-          scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        }}
+        title="side menu"
+        onClick={onOpen}
       >
-        <MdKeyboardArrowUp />
+        <TbMenuDeep />
       </IconButton>
     </div>
   );
 };
 
-export default ArrowBtn;
+export default SecSideBtn;

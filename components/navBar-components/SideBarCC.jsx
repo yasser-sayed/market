@@ -18,7 +18,8 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { TbMenuDeep } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import ThemeCC from "./ThemeCC";
+import ThemeCC from "./NavList-components/ThemeCC";
+import SecSideBtn from "../SecSideBtn";
 
 const SideBarCC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,6 +28,8 @@ const SideBarCC = () => {
   );
   const dispatch = useDispatch();
   const router = useRouter();
+
+  console.log(isOpen, onOpen, onClose);
 
   useEffect(() => {
     dispatch(getCatList());
@@ -40,6 +43,9 @@ const SideBarCC = () => {
       >
         <TbMenuDeep />
       </Typography>
+
+      <SecSideBtn isOpen={isOpen} onOpen={onOpen} />
+
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent bg="unset" className="!bg-mainclr dark:!bg-secClr">

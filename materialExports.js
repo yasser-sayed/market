@@ -9,6 +9,10 @@ import {
   MenuItem,
   Badge,
   Carousel,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
 } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import store from "./redux-system/store";
@@ -25,4 +29,8 @@ export {
   MenuItem,
   Badge,
   Carousel,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
 };
