@@ -8,7 +8,7 @@ import { getSrchResult } from "@/redux-system/slices/searchSlice";
 import Loading from "@/components/Loading";
 import CardSC from "@/components/CardSC";
 
-const search = ({ params: { srchWord } }) => {
+const Search = ({ params: { srchWord } }) => {
   const { srchResult, srchLoading } = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
@@ -61,4 +61,4 @@ const search = ({ params: { srchWord } }) => {
   );
 };
 
-export default search;
+export default Search;
