@@ -14,7 +14,7 @@ const Search = ({ params: { srchWord } }) => {
 
   useEffect(() => {
     dispatch(getSrchResult(srchWord));
-  }, []);
+  }, [srchWord]);
 
   return (
     <>
@@ -23,7 +23,7 @@ const Search = ({ params: { srchWord } }) => {
       ) : !srchResult.length ? (
         <Center
           bg={"transparent"}
-          className="!text-mainclr dark:!text-secClr text-2xl h-screen"
+          className="!text-mainclr dark:!text-secClr text-3xl font-extrabold h-screen"
         >
           Sorry, No Products Found!
         </Center>
