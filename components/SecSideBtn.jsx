@@ -6,7 +6,7 @@ import { TbMenuDeep } from "react-icons/tb";
 import DrawerCC from "./DrawerCC";
 import { useDisclosure } from "@chakra-ui/react";
 
-const SecSideBtn = ({ isOpen, onOpen }) => {
+const SecSideBtn = () => {
   const [scrollY, setScrollY] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
