@@ -11,12 +11,9 @@ import {
 } from "@/materialExports";
 import Link from "next/link";
 
-const CardSC = ({ prod, i }) => {
+const CardSC = ({ prod }) => {
   return (
-    <Card
-      className="max-w-[24rem] overflow-hidden shadow-lg text-black group dark:bg-forthClr dark:text-thirdClr"
-      key={i}
-    >
+    <Card className="max-w-[24rem] overflow-hidden shadow-lg text-black group dark:bg-forthClr dark:text-thirdClr">
       <CardHeader
         floated={false}
         shadow

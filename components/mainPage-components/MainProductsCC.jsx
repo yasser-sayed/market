@@ -28,7 +28,7 @@ const MainProductsCC = () => {
       {productsLoading ? (
         <Loading />
       ) : (
-        products.map((prod, i) => <CardSC prod={prod} i={i} />)
+        products.map((prod, i) => <CardSC prod={prod} key={i} />)
       )}
     </Flex>
   );
