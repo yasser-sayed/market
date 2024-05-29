@@ -20,9 +20,8 @@ const search = ({ params: { srchWord } }) => {
         <Loading />
       ) : !srchResult.length ? (
         <Center
-          h={"100%"}
           bg={"transparent"}
-          className="!text-mainclr dark:!text-secClr text-2xl"
+          className="!text-mainclr dark:!text-secClr text-2xl h-screen"
         >
           Sorry, No Products Found!
         </Center>
