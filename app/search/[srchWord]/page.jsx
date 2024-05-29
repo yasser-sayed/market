@@ -1,3 +1,5 @@
+"use client";
+
 import { Center, Flex } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { Typography } from "@/materialExports";
