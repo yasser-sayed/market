@@ -21,7 +21,7 @@ const SecSideBtn = () => {
   }, []);
 
   return (
-    <div className="rounded-full relative bottom-4 !left-4">
+    <div className="rounded-full fixed bottom-4 !left-4">
       <IconButton
         hidden={isOpen || !scrollY}
         className="rounded-full text-2xl duration-150 bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
