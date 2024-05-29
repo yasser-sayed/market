@@ -4,6 +4,7 @@ import { Typography } from "@material-tailwind/react";
 import React from "react";
 import { TbMenuDeep } from "react-icons/tb";
 import DrawerCC from "../DrawerCC";
+import { useDisclosure } from "@chakra-ui/react";
 
 const SideBarCC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

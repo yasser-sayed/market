@@ -13,8 +13,8 @@ import { Button, Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import ThemeCC from "./navBar-components/NavList-components/ThemeCC";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
 import { getCatList } from "@/redux-system/slices/categorySlice";
+import { useRouter } from "next/navigation";
 
 const DrawerCC = ({ isOpen, onClose }) => {
   const { categoryList, listLoading } = useSelector((state) => state.category);
