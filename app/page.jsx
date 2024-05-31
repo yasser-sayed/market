@@ -6,7 +6,7 @@ import MainProductsCC from "@/components/mainPage-components/MainProductsCC";
 
 const home = () => {
   return (
-    <div className="bg-thirdClr dark:bg-forthClr dark:bg-opacity-95">
+    <div>
       <SliderImgsCC />
 
       <Flex

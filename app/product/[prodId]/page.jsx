@@ -9,7 +9,7 @@ const product = () => {
       alignItems={"center"}
       className="my-4 mx-8 md:mx-10 lg:my-12"
     >
-      <section className="grid md:grid-cols-2 grid-cols-1 gap-3 bg-white dark:bg-forthClr">
+      <section className="grid md:grid-cols-2 grid-cols-1 gap-3 rounded bg-white dark:bg-forthClr">
         <DetCC />
       </section>
     </Flex>

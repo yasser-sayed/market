@@ -11,8 +11,6 @@ const MainProductsCC = () => {
   const { products, productsLoading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
-  console.log(products);
-
   useEffect(() => {
     dispatch(getProducts());
   }, []);

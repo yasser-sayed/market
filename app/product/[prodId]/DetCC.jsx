@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaOpencart } from "react-icons/fa6";
+import ProdImgCC from "./ProdImgCC";
 
 const DetCC = () => {
   const [quantity, setQuantity] = useState(1);
@@ -23,7 +24,7 @@ const DetCC = () => {
 
   return (
     <>
-      <Flex></Flex>
+      <ProdImgCC prodDet={prodDet} />
       <Flex
         flexDirection={"column"}
         gap={4}
@@ -40,16 +41,24 @@ const DetCC = () => {
 
         <hr />
 
-        <Typography variant="paragraph" color="gray">
+        <Typography
+          variant="paragraph"
+          color="gray"
+          className="dark:text-gray-400"
+        >
           {" "}
           {prodDet?.description}{" "}
         </Typography>
 
-        <p>
+        <p className="text-gray-600 dark:text-gray-400">
           {`rating - ${prodDet?.rating}`}{" "}
-          <span className="text-mainClr dark:text-secClr">|</span>{" "}
+          <span className="text-mainClr dark:text-secClr text-lg font-bold">
+            |
+          </span>{" "}
           {`brand - ${prodDet?.brand}`}{" "}
-          <span className="text-mainClr dark:text-secClr">|</span>{" "}
+          <span className="text-mainClr dark:text-secClr text-lg font-bold">
+            |
+          </span>{" "}
           {`category - ${prodDet?.category}`}{" "}
         </p>
 
@@ -57,7 +66,7 @@ const DetCC = () => {
           flexDirection={"column"}
           p={3}
           gap={2}
-          className="rounded-lg shadow shadow-thirdClr dark:shadow-forthClr bg-thirdClr dark:bg-forthClr dark:bg-opacity-95"
+          className="rounded-lg shadow shadow-thirdClr dark:shadow-forthClr bg-thirdClr dark:bg-[#2B2D39]"
         >
           <p className=" text-gray-500 dark:text-gray-700">
             {" "}
@@ -65,7 +74,7 @@ const DetCC = () => {
             Inclusive of taxes{" "}
           </p>
 
-          <section className="flex flex-col  gap-4 justify-center items-center md:items-start">
+          <section className="flex   gap-5 justify-center items-center md:items-start">
             <Typography
               variant="h5"
               className="text-mainclr dark:text-secClr font-bold"
@@ -79,42 +88,52 @@ const DetCC = () => {
 
             <p className="px-2 py-1 bg-mainclr dark:bg-secClr rounded">{`${prodDet?.discountPercentage} %off`}</p>
           </section>
+        </Flex>
 
-          <Flex gap={3}>
-            <p>Quantity</p>
+        <Flex gap={3} className="justify-center md:justify-start items-center ">
+          <p className="text-black dark:text-thirdClr">Quantity</p>
 
-            <ButtonGroup>
-              <Button
-                onClick={() => setQuantity(quantity - 1)}
-                disabled={quantity < 2}
-                className=" bg-white hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg dark:bg-forthClr "
-              >
-                -
-              </Button>
-              <Button
-                className="cursor-text dark:bg-forthClr dark:shadow-forthClr"
-                color="white"
-              >
-                {quantity}
-              </Button>
-              <Button
-                onClick={() => setQuantity(quantity + 1)}
-                className=" bg-white hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg dark:bg-forthClr "
-              >
-                +
-              </Button>
-            </ButtonGroup>
-          </Flex>
-
-          <Flex>
-            <Button className="bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg">
-              <FaOpencart /> add to cart
+          <ButtonGroup size="sm" className="text-black dark:text-thirdClr">
+            <Button
+              onClick={() => setQuantity(quantity - 1)}
+              disabled={quantity < 2}
+              className=" bg-white hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg dark:bg-forthClr "
+            >
+              -
             </Button>
-
-            <Button className="bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg">
-              buy now
+            <Button
+              className=" bg-white dark:bg-forthClr dark:shadow-forthClr cursor-none"
+              color="white"
+            >
+              {quantity}
             </Button>
-          </Flex>
+            <Button
+              onClick={() => setQuantity(quantity + 1)}
+              className=" bg-white hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg dark:bg-forthClr "
+            >
+              +
+            </Button>
+          </ButtonGroup>
+        </Flex>
+
+        <Flex
+          p={2}
+          gap={3}
+          className="justify-center md:justify-start items-center"
+        >
+          <Button
+            size="md"
+            className="bg-mainclr lowercase dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+          >
+            <FaOpencart className="inline-block " /> add to cart
+          </Button>
+
+          <Button
+            size="md"
+            className="bg-mainclr lowercase dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+          >
+            buy now
+          </Button>
         </Flex>
       </Flex>
     </>
