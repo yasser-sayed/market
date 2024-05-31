@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <Navbar className="shadow-lg shadow-mainclr dark:shadow-secClr bg-mainclr dark:bg-secClr !min-w-[100%] border-0 rounded-none px-4 py-2 lg:px-8 lg:py-4  text-white dark:text-gray-300">
       <Flex
-        justifyContent="space-between"
+        className="justify-center md:justify-between"
         alignItems="center"
         flexWrap="wrap"
         gap="2"

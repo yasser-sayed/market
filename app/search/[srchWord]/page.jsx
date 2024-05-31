@@ -19,11 +19,20 @@ const Search = ({ params: { srchWord } }) => {
   return (
     <>
       {srchLoading ? (
-        <Loading />
+        <Flex
+          direction={"column"}
+          justifyContent="center"
+          alignItems="center"
+          className="  px-4 md:px-8 lg:px-10 my-10 "
+          gap="8"
+        >
+          <Loading />
+        </Flex>
       ) : !srchResult.length ? (
         <Center
           bg={"transparent"}
           className="!text-mainclr dark:!text-secClr text-3xl font-extrabold h-screen"
+          textAlign={"center"}
         >
           Sorry, No Products Found!
         </Center>

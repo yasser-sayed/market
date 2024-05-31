@@ -22,6 +22,7 @@ const CardSC = ({ prod }) => {
       >
         <Badge
           p={2}
+          userSelect={"none"}
           className="!bg-mainclr dark:!bg-secClr absolute left-0 top-4 !text-white"
         >
           {prod.category}
@@ -61,10 +62,12 @@ const CardSC = ({ prod }) => {
           </Typography>
 
           <Flex justifyContent={"center"} alignItems={"center"} gap={3}>
-            <span className="line-through text-gray-700">EGP {prod.price}</span>{" "}
+            <span className="line-through text-gray-500 dark:text-gray-700">
+              EGP {prod.price}
+            </span>{" "}
             <Typography
               variant="h6"
-              className="text-gray-300  underline underline-offset-8 border-mainclr dark:border-secClr"
+              className="text-gray-800 dark:text-gray-300  underline underline-offset-8 border-mainclr dark:border-secClr"
             >
               EGP{" "}
               {(
