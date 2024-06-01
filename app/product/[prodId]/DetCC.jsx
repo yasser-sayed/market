@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaOpencart } from "react-icons/fa6";
 import ProdImgCC from "./ProdImgCC";
 import Loading from "@/components/Loading";
+import { addToCart } from "@/redux-system/slices/cartSlice";
 
 const DetCC = () => {
   const [quantity, setQuantity] = useState(1);
@@ -136,6 +137,7 @@ const DetCC = () => {
               <Button
                 size="md"
                 className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+                onClick={() => dispatch(addToCart({ item: prodDet, quantity }))}
               >
                 <FaOpencart className="inline-block mr-1 text-lg" /> add to cart
               </Button>

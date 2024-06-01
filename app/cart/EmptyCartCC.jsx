@@ -11,6 +11,7 @@ const EmptyCartCC = () => {
       justifyContent={"center"}
       alignItems={"center"}
       gap={6}
+      flexDirection={"column"}
       className="h-[80vh] w-full"
     >
       <Image
@@ -21,7 +22,12 @@ const EmptyCartCC = () => {
         className="w-1/5 h-auto"
       />
 
-      <Typography variant="paragraph">Your shopping cart is empty</Typography>
+      <Typography
+        variant="paragraph"
+        className="text-forthClr dark:text-thirdClr"
+      >
+        Your shopping cart is empty
+      </Typography>
 
       <Link href="/">
         <Button className="bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg">
