@@ -33,7 +33,7 @@ const ProdImgCC = ({ prodDet }) => {
         gap={6}
         flexWrap={"wrap"}
       >
-        {imgs.map((img) => {
+        {imgs.map((img) => (
           <Image
             src={img.src}
             width={2000}
@@ -41,8 +41,8 @@ const ProdImgCC = ({ prodDet }) => {
             alt="image"
             className="w-auto h-[30%] cursor-zoom-in px-4 hover:p-10"
             onClick={() => setOpen(true)}
-          />;
-        })}
+          />
+        ))}
       </Flex>
 
       <Lightbox

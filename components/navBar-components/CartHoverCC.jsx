@@ -14,9 +14,13 @@ import { IoMdCart } from "react-icons/io";
 import cartImg from "@/assets/cartImg.png";
 import Image from "next/image";
 import { Flex } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const CartHoverCC = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { cartItems } = useSelector((state) => state.cart);
+  const router = useRouter();
 
   return (
     <Menu
@@ -27,7 +31,7 @@ const CartHoverCC = () => {
     >
       <MenuHandler>
         <Link href="/cart">
-          <Badge color="light-blue" content="1">
+          <Badge color="light-blue" content={cartItems.length}>
             <IoMdCart className="text-[2.3rem]" />
           </Badge>
         </Link>
@@ -42,28 +46,81 @@ const CartHoverCC = () => {
             Recenlty Added Products
           </Typography>
 
-          <Flex
-            direction="column"
-            alignItems="center"
-            justifyContent="space-around"
-            className="h-[22.5rem]"
-          >
-            <Image
-              src={cartImg}
-              width={0}
-              height={0}
-              alt="Picture of the author"
-              className="h-2/5 w-auto"
-            />
+          {/* cart content */}
+          {cartItems.length ? (
+            <Flex
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+              className="h-[22.5rem]"
+              overflow={"scroll"}
+            >
+              {cartItems.map((cartItem, i) => (
+                <div>
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent={"space-around"}
+                    className="hover:opacity-80 rounded-lg m-1"
+                    onClick={() => router.push(`/product/${cartItem.id}`)}
+                  >
+                    <Image
+                      src={cartItem.thumbnail}
+                      alt="item image"
+                      width={700}
+                      height={500}
+                      className="h-10 w-auto"
+                    />
 
-            <Typography variant="paragraph">No Products Yet!</Typography>
+                    <Typography variant="paragraph">
+                      {cartItem.title} {""}
+                    </Typography>
 
-            <Link href="/">
-              <Button className="bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg">
-                go shopping now!
-              </Button>
-            </Link>
-          </Flex>
+                    <Typography
+                      variant="h5"
+                      className="text-mainclr dark:text-thirdClr font-bold"
+                    >
+                      EGP{" "}
+                      {(
+                        cartItem.price -
+                        (cartItem.discountPercentage * cartItem.price) / 100
+                      ).toFixed(2)}
+                    </Typography>
+                  </Flex>
+
+                  <hr />
+                </div>
+              ))}
+
+              <Link href="/cart">
+                <Button className="bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg">
+                  view my cart
+                </Button>
+              </Link>
+            </Flex>
+          ) : (
+            <Flex
+              direction="column"
+              alignItems="center"
+              justifyContent="space-around"
+              className="h-[22.5rem]"
+            >
+              <Image
+                src={cartImg}
+                width={0}
+                height={0}
+                alt="Picture of the author"
+                className="h-2/5 w-auto"
+              />
+
+              <Typography variant="paragraph">No Products Yet!</Typography>
+
+              <Link href="/">
+                <Button className="bg-mainclr dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg">
+                  go shopping now!
+                </Button>
+              </Link>
+            </Flex>
+          )}
         </Flex>
       </MenuList>
     </Menu>
