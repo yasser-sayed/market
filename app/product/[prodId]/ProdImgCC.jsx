@@ -33,8 +33,9 @@ const ProdImgCC = ({ prodDet }) => {
         gap={6}
         flexWrap={"wrap"}
       >
-        {imgs.map((img) => (
+        {imgs.map((img, key) => (
           <Image
+            key={key}
             src={img.src}
             width={2000}
             height={1000}
