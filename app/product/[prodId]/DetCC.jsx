@@ -26,7 +26,9 @@ const DetCC = () => {
   return (
     <>
       {prodDetLoading ? (
-        <Loading />
+        <div className="w-full h-4/5">
+          <Loading />
+        </div>
       ) : (
         <>
           <ProdImgCC prodDet={prodDet} />

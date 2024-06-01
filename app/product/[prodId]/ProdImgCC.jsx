@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import NextJsImageCC from "./NextImageCC";
 import Image from "next/image";
-import img11 from "@/assets/slider-1.jpg";
 
 const ProdImgCC = ({ prodDet }) => {
   const [open, setOpen] = useState(false);
+  const [imgs, setImgs] = useState([]);
+
+  useEffect(() => {
+    setImgs(prodDet?.images);
+  }, [prodDet]);
   return (
     <div>
       <Image
@@ -21,7 +25,7 @@ const ProdImgCC = ({ prodDet }) => {
       <Lightbox
         open={open}
         close={() => setOpen(false)}
-        slides={[img11]}
+        slides={imgs}
         render={{ slide: NextJsImageCC }}
       />
     </div>
