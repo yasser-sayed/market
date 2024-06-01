@@ -3,6 +3,7 @@ import { Button, Typography } from "@/materialExports";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import cartImg from "@/assets/cartImg.png";
 
 const EmptyCartCC = () => {
   return (
