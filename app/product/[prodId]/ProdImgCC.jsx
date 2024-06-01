@@ -35,6 +35,7 @@ const ProdImgCC = ({ prodDet }) => {
       >
         {prodDet?.images.map((img) => {
           <Image
+            src={img}
             width={2000}
             height={1000}
             alt="image"
