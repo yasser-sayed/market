@@ -3,17 +3,14 @@ import PhotoAlbum from "react-photo-album";
 
 const ProdImgCC = ({ prodDet }) => {
   return (
-    <div style={{ ...wrapperStyle, position: "relative" }}>
+    <div style={{ position: "relative" }}>
       <PhotoAlbum
         photos={prodDet?.images}
-        renderPhoto={({
-          imageProps: { src, alt, style, ...restImageProps },
-        }) => (
+        renderPhoto={() => (
           <img
             src={prodDet?.images[0]}
             alt={"image"}
             className="w-full h-[80%]"
-            {...restImageProps}
           />
         )}
       />
