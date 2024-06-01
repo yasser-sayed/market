@@ -26,7 +26,7 @@ const DetCC = () => {
   return (
     <>
       {prodDetLoading ? (
-        <div className="w-full h-4/5">
+        <div className="col-span-2 h-[80%]">
           <Loading />
         </div>
       ) : (
@@ -109,19 +109,19 @@ const DetCC = () => {
                 <Button
                   onClick={() => setQuantity(quantity - 1)}
                   disabled={quantity < 2}
-                  className=" bg-white text-black dark:text-thirdClr hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg dark:bg-forthClr "
+                  className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg  "
                 >
                   -
                 </Button>
                 <Button
-                  className=" bg-white text-black dark:text-thirdClr dark:bg-forthClr dark:shadow-forthClr cursor-default	"
+                  className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39]  dark:shadow-forthClr cursor-default	"
                   color="white"
                 >
                   {quantity}
                 </Button>
                 <Button
                   onClick={() => setQuantity(quantity + 1)}
-                  className=" bg-white text-black dark:text-thirdClr hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg dark:bg-forthClr "
+                  className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg  "
                 >
                   +
                 </Button>
