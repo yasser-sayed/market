@@ -74,10 +74,10 @@ const DetCC = () => {
             Inclusive of taxes{" "}
           </p>
 
-          <section className="flex   gap-5 justify-center items-center md:items-start">
+          <section className="flex   gap-5 justify-center items-center md:justify-start">
             <Typography
               variant="h5"
-              className="text-mainclr dark:text-secClr font-bold"
+              className="text-mainclr dark:text-thirdClr font-bold"
             >
               EGP{" "}
               {(
@@ -93,23 +93,23 @@ const DetCC = () => {
         <Flex gap={3} className="justify-center md:justify-start items-center ">
           <p className="text-black dark:text-thirdClr">Quantity</p>
 
-          <ButtonGroup size="sm" className="text-black dark:text-thirdClr">
+          <ButtonGroup size="sm">
             <Button
               onClick={() => setQuantity(quantity - 1)}
               disabled={quantity < 2}
-              className=" bg-white hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg dark:bg-forthClr "
+              className=" bg-white text-black dark:text-thirdClr hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg dark:bg-forthClr "
             >
               -
             </Button>
             <Button
-              className=" bg-white dark:bg-forthClr dark:shadow-forthClr cursor-none"
+              className=" bg-white text-black dark:text-thirdClr dark:bg-forthClr dark:shadow-forthClr cursor-default	"
               color="white"
             >
               {quantity}
             </Button>
             <Button
               onClick={() => setQuantity(quantity + 1)}
-              className=" bg-white hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg dark:bg-forthClr "
+              className=" bg-white text-black dark:text-thirdClr hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg dark:bg-forthClr "
             >
               +
             </Button>
@@ -123,14 +123,14 @@ const DetCC = () => {
         >
           <Button
             size="md"
-            className="bg-mainclr lowercase dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+            className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
           >
-            <FaOpencart className="inline-block " /> add to cart
+            <FaOpencart className="inline-block mr-1 text-lg" /> add to cart
           </Button>
 
           <Button
             size="md"
-            className="bg-mainclr lowercase dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+            className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
           >
             buy now
           </Button>

@@ -1,18 +1,16 @@
 import React from "react";
-import PhotoAlbum from "react-photo-album";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import NextJsImageCC from "./NextImageCC";
 
 const ProdImgCC = ({ prodDet }) => {
   return (
-    <div style={{ position: "relative" }}>
-      <PhotoAlbum
-        photos={prodDet?.images}
-        renderPhoto={() => (
-          <img
-            src={prodDet?.images[0]}
-            alt={"image"}
-            className="w-full h-[80%]"
-          />
-        )}
+    <div>
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={prodDet?.images}
+        render={{ slide: NextJsImageCC }}
       />
     </div>
   );
