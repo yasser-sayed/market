@@ -13,7 +13,7 @@ const ProdImgCC = ({ prodDet }) => {
         width={2000}
         height={1000}
         alt="image"
-        className="w-full h-4/5 cursor-zoom-in"
+        className="w-full h-[70%] cursor-zoom-in"
         onClick={() => setOpen(true)}
       />
 

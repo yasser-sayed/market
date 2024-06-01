@@ -13,7 +13,7 @@ import Loading from "@/components/Loading";
 const DetCC = () => {
   const [quantity, setQuantity] = useState(1);
 
-  const { prodDet, prodLoading } = useSelector((state) => state.product);
+  const { prodDet, prodDetLoading } = useSelector((state) => state.product);
   const { theme } = useSelector((state) => state.config);
 
   const { prodId } = useParams();
@@ -25,14 +25,14 @@ const DetCC = () => {
 
   return (
     <>
-      {prodLoading ? (
+      {prodDetLoading ? (
         <Loading />
       ) : (
         <>
           <ProdImgCC prodDet={prodDet} />
           <Flex
             flexDirection={"column"}
-            gap={4}
+            gap={7}
             className="text-center md:text-start p-4"
           >
             <Typography
