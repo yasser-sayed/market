@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import NextJsImageCC from "./NextImageCC";
 
 const ProdImgCC = ({ prodDet }) => {
+  const [open, setOpen] = useState(false);
   return (
     <div>
       <Lightbox
@@ -12,6 +13,8 @@ const ProdImgCC = ({ prodDet }) => {
         slides={prodDet?.images}
         render={{ slide: NextJsImageCC }}
       />
+
+      <button onClick={() => setOpen(true)}>tesst</button>
     </div>
   );
 };
