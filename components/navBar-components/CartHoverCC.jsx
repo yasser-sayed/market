@@ -36,7 +36,11 @@ const CartHoverCC = () => {
           </Badge>
         </Link>
       </MenuHandler>
-      <MenuList className="hidden h-[28rem] w-[23rem] overflow-visible lg:flex flex-col border-2 !p-0 border-mainclr dark:border-secClr rounded-lg">
+      <MenuList
+        className={`hidden ${
+          cartItems.length ? "max" : ""
+        }h-[28rem] w-[23rem] overflow-visible lg:flex flex-col border-2 !p-0 border-mainclr dark:border-secClr rounded-lg`}
+      >
         <Flex direction="column" className="!border-0 !outline-0 select-none	">
           <Typography
             color="white"
@@ -51,8 +55,8 @@ const CartHoverCC = () => {
             <Flex
               direction="column"
               alignItems="center"
-              justifyContent="center"
-              className="h-[22.5rem]"
+              justifyContent="space-between"
+              className="max-h-[22.5rem]"
               overflow={"scroll"}
             >
               {cartItems.map((cartItem, i) => (
@@ -60,7 +64,7 @@ const CartHoverCC = () => {
                   <Flex
                     alignItems={"center"}
                     justifyContent={"space-around"}
-                    className="hover:opacity-80 rounded-lg m-1"
+                    className="hover:bg-[#8080803b] rounded-lg m-2 w-[98%] text-center"
                     onClick={() => router.push(`/product/${cartItem.id}`)}
                   >
                     <Image
@@ -76,8 +80,8 @@ const CartHoverCC = () => {
                     </Typography>
 
                     <Typography
-                      variant="h5"
-                      className="text-mainclr dark:text-thirdClr font-bold"
+                      variant="h6"
+                      className="text-mainclr dark:text-secClr font-bold"
                     >
                       EGP{" "}
                       {(
