@@ -24,17 +24,29 @@ const cartSlice = createSlice({
 
     //increment quantity
     inc: (state, { payload: { item } }) => {
-      let newCartItem = state.cartItems.map((cartItem) =>
-        cartItem.id == item.id
-          ? { ...cartItem, quantity: cartItem.quantity + 1 }
-          : item
+      let findItem = state.cartItems.find((cartItem) => cartItem.id == item.id);
+
+      findItem += 1;
+    },
+
+    //decrement quantity
+    dec: (state, { payload: { item } }) => {
+      let findItem = state.cartItems.find((cartItem) => cartItem.id == item.id);
+
+      findItem -= 1;
+    },
+
+    //delete item
+    delItem: (state, { payload: { item } }) => {
+      let newCartItems = state.cartItems.filter(
+        (cartItem) => cartItem.id !== item.id
       );
 
-      state.cartItems = newCartItem;
+      state.cartItems = newCartItems;
     },
   },
 });
 
 export const cart = cartSlice.reducer;
 
-export const { addToCart, inc } = cartSlice.actions;
+export const { addToCart, inc, dec, delItem } = cartSlice.actions;

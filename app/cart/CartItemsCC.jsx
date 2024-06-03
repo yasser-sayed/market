@@ -28,19 +28,19 @@ const CartItemsCC = () => {
   const router = useRouter();
   return (
     <div>
-      <Card className="h-full w-full overflow-scroll">
+      <Card className="h-full w-full overflow-scroll bg-white dark:bg-forthClr">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
                 <th
                   key={head}
-                  className="border-y   border-b border-blue-gray-100 bg-thirdClr dark:bg-[#2B2D39]  p-4"
+                  className="border-y   border-b border-blue-gray-100 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
                 >
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="font-normal leading-none opacity-70"
+                    className="font-normal leading-none opacity-70 text-xs lg:text-md"
                   >
                     {head}
                   </Typography>
@@ -48,7 +48,7 @@ const CartItemsCC = () => {
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="dark:text-thirdClr">
             {cartItems.map(
               (
                 { thumbnail, title, price, discountPercentage, quantity, id },
@@ -65,9 +65,9 @@ const CartItemsCC = () => {
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-normal"
+                        className="font-normal text-xs lg:text-md"
                       >
-                        {index}
+                        {index + 1}
                       </Typography>
                     </td>
 
@@ -85,7 +85,7 @@ const CartItemsCC = () => {
                           as={Link}
                           variant="small"
                           color="blue-gray"
-                          className="font-bold"
+                          className="font-bold text-xs lg:text-md"
                           href={`/product/${id}`}
                         >
                           {title}
@@ -97,7 +97,7 @@ const CartItemsCC = () => {
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-normal"
+                        className="font-normal text-xs lg:text-md"
                       >
                         EGP{" "}
                         {(price - (discountPercentage * price) / 100).toFixed(
@@ -134,7 +134,7 @@ const CartItemsCC = () => {
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-normal"
+                        className="font-normal text-xs lg:text-md"
                       >
                         EGP{" "}
                         {(price - (discountPercentage * price) / 100).toFixed(
@@ -145,7 +145,7 @@ const CartItemsCC = () => {
 
                     <td className={classes}>
                       <Tooltip content="delete item">
-                        <IconButton variant="text">
+                        <IconButton variant="text" size="sm">
                           <TbTrash className="text-lg" />
                         </IconButton>
                       </Tooltip>
