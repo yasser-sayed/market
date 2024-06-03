@@ -60,11 +60,11 @@ const CartHoverCC = () => {
               overflow={"scroll"}
             >
               {cartItems.map((cartItem, i) => (
-                <div key={i}>
+                <div key={i} className="w-full">
                   <Flex
                     alignItems={"center"}
                     justifyContent={"space-around"}
-                    className="hover:bg-[#8080803b] rounded-lg m-2 w-[98%] text-center"
+                    className="hover:bg-[#8080803b] rounded-lg p-2 m-2 w-[98%] text-center"
                     onClick={() => router.push(`/product/${cartItem.id}`)}
                   >
                     <Image

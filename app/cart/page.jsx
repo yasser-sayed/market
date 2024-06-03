@@ -1,10 +1,10 @@
 import React from "react";
-import EmptyCartCC from "./EmptyCartCC";
+import MainCartCC from "./MainCartCC";
 
 const cart = () => {
   return (
     <div>
-      <EmptyCartCC />
+      <MainCartCC />
     </div>
   );
 };

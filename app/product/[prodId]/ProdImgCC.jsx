@@ -18,20 +18,26 @@ const ProdImgCC = ({ prodDet }) => {
   }, [prodDet]);
   return (
     <div>
-      <Image
-        src={prodDet?.images[0]}
-        width={2000}
-        height={1000}
-        alt="image"
-        className="w-full h-[70%] cursor-zoom-in px-4"
-        onClick={() => setOpen(true)}
-      />
+      <Flex
+        justifyContent={"center"}
+        alignItems={"center"}
+        className="w-full h-[32rem]"
+      >
+        <Image
+          src={prodDet?.images[0]}
+          width={2000}
+          height={1000}
+          alt="image"
+          className="max-w-full max-h-full cursor-zoom-in px-4"
+          onClick={() => setOpen(true)}
+        />
+      </Flex>
 
       <Flex
         alignItems={"center"}
         justifyContent={"center"}
         gap={6}
-        flexWrap={"wrap"}
+        className="px-8 h-24 w-full"
       >
         {imgs.map((img, key) => (
           <Image
@@ -40,7 +46,7 @@ const ProdImgCC = ({ prodDet }) => {
             width={2000}
             height={1000}
             alt="image"
-            className="w-1/4 h-[30%] cursor-zoom-in mx-4 hover:p-5"
+            className="w-auto h-auto max-h-full cursor-zoom-in mx-4 hover:p-5"
             onClick={() => setOpen(true)}
           />
         ))}
