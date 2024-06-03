@@ -50,7 +50,7 @@ const CartItemsCC = () => {
               { thumbnail, title, price, discountPercentage, quantity },
               index
             ) => {
-              const isLast = index === TABLE_ROWS.length - 1;
+              const isLast = index === cartItems.length - 1;
               const classes = isLast
                 ? "p-4"
                 : "p-4 border-b border-blue-gray-50";

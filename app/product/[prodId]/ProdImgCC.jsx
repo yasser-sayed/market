@@ -28,7 +28,7 @@ const ProdImgCC = ({ prodDet }) => {
           width={2000}
           height={1000}
           alt="image"
-          className="max-w-full max-h-full cursor-zoom-in px-4"
+          className="max-w-full w-auto max-h-full cursor-zoom-in px-4"
           onClick={() => setOpen(true)}
         />
       </Flex>
