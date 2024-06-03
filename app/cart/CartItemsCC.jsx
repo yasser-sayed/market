@@ -43,7 +43,7 @@ const CartItemsCC = () => {
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="font-normal leading-none opacity-70 text-xs lg:text-md"
+                    className="font-normal leading-none opacity-70 text-xs lg:text-lg"
                   >
                     {head}
                   </Typography>
@@ -72,7 +72,7 @@ const CartItemsCC = () => {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal text-xs lg:text-md"
+                      className="font-normal text-xs lg:text-lg"
                     >
                       {index + 1}
                     </Typography>
@@ -92,7 +92,7 @@ const CartItemsCC = () => {
                         as={Link}
                         variant="small"
                         color="blue-gray"
-                        className="font-bold text-xs lg:text-md"
+                        className="font-bold text-xs lg:text-lg"
                         href={`/product/${id}`}
                       >
                         {title}
@@ -104,7 +104,7 @@ const CartItemsCC = () => {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal text-xs lg:text-md"
+                      className="font-normal text-xs lg:text-lg"
                     >
                       EGP{" "}
                       {(price - (discountPercentage * price) / 100).toFixed(2)}
@@ -114,7 +114,7 @@ const CartItemsCC = () => {
                   <td className={classes}>
                     <ButtonGroup size="sm">
                       <Button
-                        onClick={() => dispatch(inc({ item }))}
+                        onClick={() => dispatch(dec({ item }))}
                         disabled={quantity < 2}
                         className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg  "
                       >
@@ -127,7 +127,7 @@ const CartItemsCC = () => {
                         {quantity}
                       </Button>
                       <Button
-                        onClick={() => dispatch(dec({ item }))}
+                        onClick={() => dispatch(inc({ item }))}
                         className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg  "
                       >
                         +
@@ -139,7 +139,7 @@ const CartItemsCC = () => {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal text-xs lg:text-md"
+                      className="font-normal text-xs lg:text-lg"
                     >
                       EGP{" "}
                       {(price - (discountPercentage * price) / 100).toFixed(2) *
