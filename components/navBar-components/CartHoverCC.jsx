@@ -65,7 +65,7 @@ const CartHoverCC = () => {
                   <Flex
                     alignItems={"center"}
                     justifyContent={"space-around"}
-                    className="hover:bg-[#8080803b] rounded-lg p-2 m-2 w-[98%] text-center"
+                    className="hover:bg-[#8080803b] rounded-lg p-2 m-2 w-[98%] text-center cursor-pointer"
                     onClick={() => router.push(`/product/${cartItem.id}`)}
                   >
                     <Image
