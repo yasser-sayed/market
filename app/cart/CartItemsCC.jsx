@@ -46,7 +46,7 @@ const CartItemsCC = () => {
   return (
     <div className="p-12 flex flex-col items-center justify-center gap-12">
       <div className="overflow-y-scroll w-full rounded-lg">
-        <Card className="h-full w-full  bg-white dark:bg-forthClr">
+        <Card className="h-full w-full min-w-fit bg-white dark:bg-forthClr">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr>
@@ -66,7 +66,7 @@ const CartItemsCC = () => {
                 ))}
               </tr>
             </thead>
-            <tbody className="dark:text-thirdClr min-w-fit">
+            <tbody className="dark:text-thirdClr ">
               {cartItems.map((item, index) => {
                 const {
                   thumbnail,
@@ -235,8 +235,8 @@ const CartItemsCC = () => {
         leastDestructiveRef={cancelRef}
         onClose={onClose}
       >
-        <AlertDialogOverlay className="bg-thirdClr dark:bg-[#2B2D39] text-forthClr dark:text-thirdClr">
-          <AlertDialogContent>
+        <AlertDialogOverlay>
+          <AlertDialogContent className="bg-thirdClr dark:bg-[#2B2D39] text-forthClr dark:text-thirdClr">
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               clear your cart
             </AlertDialogHeader>
@@ -246,16 +246,22 @@ const CartItemsCC = () => {
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button
+                ref={cancelRef}
+                onClick={onClose}
+                size="sm"
+                className="capitalize"
+              >
                 Cancel
               </Button>
               <Button
+                size="sm"
+                className="capitalize ml-4"
                 color="red"
                 onClick={() => {
                   dispatch(clearCart());
                   onClose();
                 }}
-                ml={3}
               >
                 clear
               </Button>
