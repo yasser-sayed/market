@@ -13,10 +13,11 @@ import { TbTrash } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { dec, delItem, inc } from "@/redux-system/slices/cartSlice";
+import { clearCart, dec, delItem, inc } from "@/redux-system/slices/cartSlice";
+import { Flex } from "@chakra-ui/react";
+import { IoRefresh } from "react-icons/io5";
 
 const TABLE_HEAD = [
-  "S.N",
   "product",
   "Unit Price",
   "Quantity",
@@ -31,143 +32,182 @@ const CartItemsCC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="px-12">
-      <Card className="h-full w-full  bg-white dark:bg-forthClr">
-        <table className="w-full min-w-max table-auto text-left">
-          <thead>
-            <tr>
-              {TABLE_HEAD.map((head) => (
-                <th
-                  key={head}
-                  className="border-y   border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
-                >
-                  <Typography
-                    variant="small"
-                    color={theme ? "blue-gray" : "white"}
-                    className="font-normal leading-none opacity-70 "
+    <div className="p-12">
+      <div className="overflow-y-scroll">
+        <Card className="h-full w-full  bg-white dark:bg-forthClr">
+          <table className="w-full min-w-max table-auto text-left">
+            <thead>
+              <tr>
+                {TABLE_HEAD.map((head) => (
+                  <th
+                    key={head}
+                    className="border-y   border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
                   >
-                    {head}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="dark:text-thirdClr">
-            {cartItems.map((item, index) => {
-              const {
-                thumbnail,
-                title,
-                price,
-                discountPercentage,
-                quantity,
-                id,
-              } = item;
-              const isLast = index === cartItems.length - 1;
-              const classes = isLast
-                ? "p-4"
-                : "p-4 border-b border-blue-gray-50 dark:border-gray-500";
-
-              return (
-                <tr key={title}>
-                  <td className={classes}>
                     <Typography
                       variant="small"
                       color={theme ? "blue-gray" : "white"}
-                      className="font-normal "
+                      className="font-normal leading-none opacity-70 "
                     >
-                      {index + 1}
+                      {head}
                     </Typography>
-                  </td>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="dark:text-thirdClr">
+              {cartItems.map((item, index) => {
+                const {
+                  thumbnail,
+                  title,
+                  price,
+                  discountPercentage,
+                  quantity,
+                  id,
+                } = item;
+                const isLast = index === cartItems.length - 1;
+                const classes = isLast
+                  ? "p-4"
+                  : "p-4 border-b border-blue-gray-50 dark:border-gray-500";
 
-                  <td className={classes}>
-                    <div className="flex items-center gap-3">
-                      <Avatar
-                        onClick={() => router.push(`/product/${id}`)}
-                        src={thumbnail}
-                        alt={title}
-                        size="md"
-                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 cursor-pointer"
-                      />
+                return (
+                  <tr key={title}>
+                    <td className={classes}>
+                      <div className="flex items-center gap-3">
+                        <Avatar
+                          onClick={() => router.push(`/product/${id}`)}
+                          src={thumbnail}
+                          alt={title}
+                          size="md"
+                          className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 cursor-pointer"
+                        />
 
+                        <Typography
+                          as={Link}
+                          variant="small"
+                          color={theme ? "blue-gray" : "white"}
+                          className="font-bold "
+                          href={`/product/${id}`}
+                        >
+                          {title}
+                        </Typography>
+                      </div>
+                    </td>
+
+                    <td className={classes}>
                       <Typography
-                        as={Link}
                         variant="small"
                         color={theme ? "blue-gray" : "white"}
-                        className="font-bold "
-                        href={`/product/${id}`}
+                        className="font-normal "
                       >
-                        {title}
-                      </Typography>
-                    </div>
-                  </td>
-
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color={theme ? "blue-gray" : "white"}
-                      className="font-normal "
-                    >
-                      EGP{" "}
-                      {(price - (discountPercentage * price) / 100).toFixed(2)}
-                    </Typography>
-                  </td>
-
-                  <td className={classes}>
-                    <ButtonGroup size="sm">
-                      <Button
-                        onClick={() => dispatch(dec({ item }))}
-                        disabled={quantity < 2}
-                        className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg  "
-                      >
-                        -
-                      </Button>
-                      <Button
-                        className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39]  dark:shadow-forthClr cursor-default	"
-                        color="white"
-                      >
-                        {quantity}
-                      </Button>
-                      <Button
-                        onClick={() => dispatch(inc({ item }))}
-                        className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg  "
-                      >
-                        +
-                      </Button>
-                    </ButtonGroup>
-                  </td>
-
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal "
-                    >
-                      EGP{" "}
-                      {(
-                        (price - (discountPercentage * price) / 100).toFixed(
+                        EGP{" "}
+                        {(price - (discountPercentage * price) / 100).toFixed(
                           2
-                        ) * quantity
-                      ).toFixed(2)}
-                    </Typography>
-                  </td>
+                        )}
+                      </Typography>
+                    </td>
 
-                  <td className={classes}>
-                    <Tooltip content="delete item">
-                      <IconButton
-                        variant="text"
-                        size="sm"
-                        onClick={() => dispatch(delItem({ item }))}
+                    <td className={classes}>
+                      <ButtonGroup size="sm">
+                        <Button
+                          onClick={() => dispatch(dec({ item }))}
+                          disabled={quantity < 2}
+                          className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg  "
+                        >
+                          -
+                        </Button>
+                        <Button
+                          className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39]  dark:shadow-forthClr cursor-default	"
+                          color="white"
+                        >
+                          {quantity}
+                        </Button>
+                        <Button
+                          onClick={() => dispatch(inc({ item }))}
+                          className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg  "
+                        >
+                          +
+                        </Button>
+                      </ButtonGroup>
+                    </td>
+
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal "
                       >
-                        <TbTrash className="text-lg text-black dark:text-thirdClr" />
-                      </IconButton>
-                    </Tooltip>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </Card>
+                        EGP{" "}
+                        {(
+                          (price - (discountPercentage * price) / 100).toFixed(
+                            2
+                          ) * quantity
+                        ).toFixed(2)}
+                      </Typography>
+                    </td>
+
+                    <td className={classes}>
+                      <Tooltip content="delete item">
+                        <IconButton
+                          variant="text"
+                          size="sm"
+                          onClick={() => dispatch(delItem({ item }))}
+                        >
+                          <TbTrash className="text-lg text-black dark:text-thirdClr" />
+                        </IconButton>
+                      </Tooltip>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </Card>
+      </div>
+
+      <Flex
+        alignItems={"center"}
+        direction={"column"}
+        gap={6}
+        justifyContent={"space-around"}
+        className="bg-white dark:bg-forthClr rounded-lg px-8 py-4 "
+      >
+        <Typography variant="h5">
+          total items :{" "}
+          <span className="text-mainclr dark:text-secClr">
+            {cartItems.length}
+          </span>
+        </Typography>
+        <Typography variant="h5">
+          total price :{" "}
+          <span className="text-mainclr dark:text-secClr">
+            {cartItems
+              .map((item) => item.quantity * item.price)
+              .reduce((num1, num2) => num1 + num2)}
+          </span>
+        </Typography>
+
+        <Flex
+          p={2}
+          gap={3}
+          className="justify-center md:justify-start items-center"
+        >
+          <Button
+            size="md"
+            variant="outlined"
+            className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+            onClick={clearCart}
+          >
+            <IoRefresh className="inline-block mr-1 text-lg" /> clear cart
+          </Button>
+
+          <Button
+            size="md"
+            className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
+          >
+            check out
+          </Button>
+        </Flex>
+      </Flex>
     </div>
   );
 };
