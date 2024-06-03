@@ -237,11 +237,15 @@ const CartItemsCC = () => {
       >
         <AlertDialogOverlay>
           <AlertDialogContent className="bg-thirdClr dark:bg-[#2B2D39] text-forthClr dark:text-thirdClr">
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+            <AlertDialogHeader
+              fontSize="lg"
+              fontWeight="bold"
+              className="text-forthClr dark:text-thirdClr"
+            >
               clear your cart
             </AlertDialogHeader>
 
-            <AlertDialogBody>
+            <AlertDialogBody className="text-forthClr dark:text-thirdClr">
               Are you sure? You can't undo this action afterwards.
             </AlertDialogBody>
 
