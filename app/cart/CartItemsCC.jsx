@@ -32,8 +32,8 @@ const CartItemsCC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="p-12">
-      <div className="overflow-y-scroll">
+    <div className="p-12 flex flex-col items-center justify-center gap-12">
+      <div className="overflow-y-scroll rounded-lg">
         <Card className="h-full w-full  bg-white dark:bg-forthClr">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
@@ -41,7 +41,7 @@ const CartItemsCC = () => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y   border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
+                    className="border-y border-x   border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
                   >
                     <Typography
                       variant="small"
@@ -133,7 +133,7 @@ const CartItemsCC = () => {
                     <td className={classes}>
                       <Typography
                         variant="small"
-                        color="blue-gray"
+                        color={theme ? "blue-gray" : "white"}
                         className="font-normal "
                       >
                         EGP{" "}
@@ -171,18 +171,26 @@ const CartItemsCC = () => {
         justifyContent={"space-around"}
         className="bg-white dark:bg-forthClr rounded-lg px-8 py-4 "
       >
-        <Typography variant="h5">
+        <Typography variant="h5" color={theme ? "blue-gray" : "white"}>
           total items :{" "}
-          <span className="text-mainclr dark:text-secClr">
+          <span className="text-mainclr dark:text-secClr text-xl">
             {cartItems.length}
           </span>
         </Typography>
-        <Typography variant="h5">
+        <Typography variant="h5" color={theme ? "blue-gray" : "white"}>
           total price :{" "}
-          <span className="text-mainclr dark:text-secClr">
+          <span className="text-mainclr dark:text-secClr text-xl">
             {cartItems
-              .map((item) => item.quantity * item.price)
-              .reduce((num1, num2) => num1 + num2)}
+              .map(
+                (item) =>
+                  item.quantity *
+                  (
+                    item.price -
+                    (item.discountPercentage * item.price) / 100
+                  ).toFixed(2)
+              )
+              .reduce((num1, num2) => num1 + num2)
+              .toFixed(2)}
           </span>
         </Typography>
 
@@ -193,9 +201,8 @@ const CartItemsCC = () => {
         >
           <Button
             size="md"
-            variant="outlined"
             className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
-            onClick={clearCart}
+            onClick={() => dispatch(clearCart())}
           >
             <IoRefresh className="inline-block mr-1 text-lg" /> clear cart
           </Button>
