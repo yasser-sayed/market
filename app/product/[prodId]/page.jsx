@@ -12,7 +12,7 @@ const product = () => {
     <Flex
       justifyContent={"center"}
       alignItems={"center"}
-      className="my-4 mx-8 md:mx-10 lg:my-12"
+      className="my-4 mx-8 md:mx-10 lg:my-12 min-h-[80vh]"
     >
       <section className="grid md:grid-cols-2 grid-cols-1 gap-3 rounded bg-white dark:bg-forthClr">
         <DetCC />

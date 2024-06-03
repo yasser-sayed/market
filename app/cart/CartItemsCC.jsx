@@ -44,7 +44,7 @@ const CartItemsCC = () => {
   const cancelRef = useRef();
 
   return (
-    <div className="p-12 flex flex-col items-center justify-center gap-12">
+    <div className="p-12 flex flex-col items-center justify-center gap-12 min-h-[80vh]">
       <div className="overflow-y-scroll w-full rounded-lg">
         <Card className="h-full w-full min-w-fit bg-white dark:bg-forthClr">
           <table className="w-full min-w-max table-auto text-left">
