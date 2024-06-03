@@ -9,10 +9,11 @@ import {
   ButtonGroup,
 } from "@material-tailwind/react";
 import { TbTrash } from "react-icons/tb";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Card } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { dec, delItem, inc } from "@/redux-system/slices/cartSlice";
 
 const TABLE_HEAD = [
   "S.N",
@@ -26,6 +27,8 @@ const TABLE_HEAD = [
 const CartItemsCC = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const router = useRouter();
+  const dispatch = useDispatch();
+
   return (
     <div>
       <Card className="h-full w-full overflow-scroll bg-white dark:bg-forthClr">
@@ -49,111 +52,115 @@ const CartItemsCC = () => {
             </tr>
           </thead>
           <tbody className="dark:text-thirdClr">
-            {cartItems.map(
-              (
-                { thumbnail, title, price, discountPercentage, quantity, id },
-                index
-              ) => {
-                const isLast = index === cartItems.length - 1;
-                const classes = isLast
-                  ? "p-4"
-                  : "p-4 border-b border-blue-gray-50";
+            {cartItems.map((item, index) => {
+              const {
+                thumbnail,
+                title,
+                price,
+                discountPercentage,
+                quantity,
+                id,
+              } = item;
+              const isLast = index === cartItems.length - 1;
+              const classes = isLast
+                ? "p-4"
+                : "p-4 border-b border-blue-gray-50";
 
-                return (
-                  <tr key={title}>
-                    <td className={classes}>
+              return (
+                <tr key={title}>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal text-xs lg:text-md"
+                    >
+                      {index + 1}
+                    </Typography>
+                  </td>
+
+                  <td className={classes}>
+                    <div className="flex items-center gap-3">
+                      <Avatar
+                        onClick={() => router.push(`/product/${id}`)}
+                        src={thumbnail}
+                        alt={title}
+                        size="md"
+                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 cursor-pointer"
+                      />
+
                       <Typography
+                        as={Link}
                         variant="small"
                         color="blue-gray"
-                        className="font-normal text-xs lg:text-md"
+                        className="font-bold text-xs lg:text-md"
+                        href={`/product/${id}`}
                       >
-                        {index + 1}
+                        {title}
                       </Typography>
-                    </td>
+                    </div>
+                  </td>
 
-                    <td className={classes}>
-                      <div className="flex items-center gap-3">
-                        <Avatar
-                          onClick={() => router.push(`/product/${id}`)}
-                          src={thumbnail}
-                          alt={title}
-                          size="md"
-                          className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 cursor-pointer"
-                        />
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal text-xs lg:text-md"
+                    >
+                      EGP{" "}
+                      {(price - (discountPercentage * price) / 100).toFixed(2)}
+                    </Typography>
+                  </td>
 
-                        <Typography
-                          as={Link}
-                          variant="small"
-                          color="blue-gray"
-                          className="font-bold text-xs lg:text-md"
-                          href={`/product/${id}`}
-                        >
-                          {title}
-                        </Typography>
-                      </div>
-                    </td>
-
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal text-xs lg:text-md"
+                  <td className={classes}>
+                    <ButtonGroup size="sm">
+                      <Button
+                        onClick={() => dispatch(inc({ item }))}
+                        disabled={quantity < 2}
+                        className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg  "
                       >
-                        EGP{" "}
-                        {(price - (discountPercentage * price) / 100).toFixed(
-                          2
-                        )}
-                      </Typography>
-                    </td>
-
-                    <td className={classes}>
-                      <ButtonGroup size="sm">
-                        <Button
-                          //   onClick={() => setQuantity(quantity - 1)}
-                          disabled={quantity < 2}
-                          className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-red-600 dark:hover:bg-red-600 hover:shadow-red-600 hover:shadow-lg  "
-                        >
-                          -
-                        </Button>
-                        <Button
-                          className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39]  dark:shadow-forthClr cursor-default	"
-                          color="white"
-                        >
-                          {quantity}
-                        </Button>
-                        <Button
-                          //   onClick={() => setQuantity(quantity + 1)}
-                          className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg  "
-                        >
-                          +
-                        </Button>
-                      </ButtonGroup>
-                    </td>
-
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal text-xs lg:text-md"
+                        -
+                      </Button>
+                      <Button
+                        className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39]  dark:shadow-forthClr cursor-default	"
+                        color="white"
                       >
-                        EGP{" "}
-                        {(price - (discountPercentage * price) / 100).toFixed(
-                          2
-                        ) * quantity}
-                      </Typography>
-                    </td>
+                        {quantity}
+                      </Button>
+                      <Button
+                        onClick={() => dispatch(dec({ item }))}
+                        className=" bg-thirdClr text-black dark:text-thirdClr dark:bg-[#2B2D39] hover:bg-green-600 dark:hover:bg-green-600 hover:shadow-green-600 hover:shadow-lg  "
+                      >
+                        +
+                      </Button>
+                    </ButtonGroup>
+                  </td>
 
-                    <td className={classes}>
-                      <Tooltip content="delete item">
-                        <IconButton variant="text" size="sm">
-                          <TbTrash className="text-lg" />
-                        </IconButton>
-                      </Tooltip>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal text-xs lg:text-md"
+                    >
+                      EGP{" "}
+                      {(price - (discountPercentage * price) / 100).toFixed(2) *
+                        quantity}
+                    </Typography>
+                  </td>
+
+                  <td className={classes}>
+                    <Tooltip content="delete item">
+                      <IconButton
+                        variant="text"
+                        size="sm"
+                        onClick={() => dispatch(delItem({ item }))}
+                      >
+                        <TbTrash className="text-lg" />
+                      </IconButton>
+                    </Tooltip>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </Card>
