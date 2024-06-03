@@ -2,6 +2,11 @@ import { Flex } from "@chakra-ui/react";
 import React from "react";
 import DetCC from "./DetCC";
 
+export const metadata = {
+  title: "rsa product view",
+  description: "showing product details",
+};
+
 const product = () => {
   return (
     <Flex

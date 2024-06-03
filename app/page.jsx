@@ -4,6 +4,11 @@ import { Typography } from "@/materialExports";
 import React from "react";
 import MainProductsCC from "@/components/mainPage-components/MainProductsCC";
 
+export const metadata = {
+  title: "rsa market",
+  description: "the place that you find every thing you want",
+};
+
 const home = () => {
   return (
     <div>

@@ -4,6 +4,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import ArrowBtn from "./ArrowBtn";
 import SecSideBtn from "./SecSideBtn";
+import FooterSC from "./FooterSC";
 
 const MainLayout = ({ children }) => {
   return (
@@ -17,6 +18,8 @@ const MainLayout = ({ children }) => {
 
             <ArrowBtn />
             <SecSideBtn />
+
+            <FooterSC />
           </Provider>
         </ChakraProvider>
       </ThemeProvider>
