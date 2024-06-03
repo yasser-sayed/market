@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import {
   Typography,
@@ -14,7 +14,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { clearCart, dec, delItem, inc } from "@/redux-system/slices/cartSlice";
-import { Flex } from "@chakra-ui/react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Flex,
+} from "@chakra-ui/react";
 import { IoRefresh } from "react-icons/io5";
 
 const TABLE_HEAD = [
@@ -31,9 +39,12 @@ const CartItemsCC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef();
+
   return (
     <div className="p-12 flex flex-col items-center justify-center gap-12">
-      <div className="overflow-y-scroll rounded-lg">
+      <div className="overflow-y-scroll w-full rounded-lg">
         <Card className="h-full w-full  bg-white dark:bg-forthClr">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
@@ -41,7 +52,7 @@ const CartItemsCC = () => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-x   border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
+                    className="border-y    border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
                   >
                     <Typography
                       variant="small"
@@ -54,7 +65,7 @@ const CartItemsCC = () => {
                 ))}
               </tr>
             </thead>
-            <tbody className="dark:text-thirdClr">
+            <tbody className="dark:text-thirdClr min-w-fit">
               {cartItems.map((item, index) => {
                 const {
                   thumbnail,
@@ -202,7 +213,7 @@ const CartItemsCC = () => {
           <Button
             size="md"
             className="bg-mainclr capitalize dark:bg-secClr hover:shadow-mainclr dark:hover:shadow-secClr shadow-lg"
-            onClick={() => dispatch(clearCart())}
+            onClick={onOpen}
           >
             <IoRefresh className="inline-block mr-1 text-lg" /> clear cart
           </Button>
@@ -215,6 +226,42 @@ const CartItemsCC = () => {
           </Button>
         </Flex>
       </Flex>
+
+      {/* dialog div */}
+
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay className="bg-thirdClr dark:bg-[#2B2D39] text-forthClr dark:text-thirdClr">
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              clear your cart
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Are you sure? You can't undo this action afterwards.
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button
+                color="red"
+                onClick={() => {
+                  dispatch(clearCart());
+                  onClose();
+                }}
+                ml={3}
+              >
+                clear
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </div>
   );
 };
