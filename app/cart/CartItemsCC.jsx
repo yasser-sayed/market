@@ -127,10 +127,8 @@ const CartItemsCC = () => {
                       className="font-normal"
                     >
                       EGP{" "}
-                      {(
-                        prodDet?.price -
-                        (prodDet?.discountPercentage * prodDet?.price) / 100
-                      ).toFixed(2) * quantity}
+                      {(price - (discountPercentage * price) / 100).toFixed(2) *
+                        quantity}
                     </Typography>
                   </td>
 

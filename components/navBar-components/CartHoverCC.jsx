@@ -57,10 +57,11 @@ const CartHoverCC = () => {
               alignItems="center"
               justifyContent="space-between"
               className="max-h-[22.5rem]"
+              gap={8}
               overflow={"scroll"}
             >
               {cartItems.map((cartItem, i) => (
-                <div key={i} className="w-full">
+                <div key={i} className="w-[98%]">
                   <Flex
                     alignItems={"center"}
                     justifyContent={"space-around"}
