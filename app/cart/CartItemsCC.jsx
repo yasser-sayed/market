@@ -26,24 +26,25 @@ const TABLE_HEAD = [
 
 const CartItemsCC = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  const { theme } = useSelector((state) => state.config);
   const router = useRouter();
   const dispatch = useDispatch();
 
   return (
     <div>
-      <Card className="h-full w-full overflow-scroll bg-white dark:bg-forthClr">
+      <Card className="h-full w-full  bg-white dark:bg-forthClr">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
                 <th
                   key={head}
-                  className="border-y   border-b border-blue-gray-100 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
+                  className="border-y   border-b border-blue-gray-100 dark:border-gray-500 bg-thirdClr dark:bg-[#2B2D39] dark:text-thirdClr p-4"
                 >
                   <Typography
                     variant="small"
-                    color="blue-gray"
-                    className="font-normal leading-none opacity-70 text-xs lg:text-lg"
+                    color={theme ? "blue-gray" : "white"}
+                    className="font-normal leading-none opacity-70 "
                   >
                     {head}
                   </Typography>
@@ -64,15 +65,15 @@ const CartItemsCC = () => {
               const isLast = index === cartItems.length - 1;
               const classes = isLast
                 ? "p-4"
-                : "p-4 border-b border-blue-gray-50";
+                : "p-4 border-b border-blue-gray-50 dark:border-gray-500";
 
               return (
                 <tr key={title}>
                   <td className={classes}>
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal text-xs lg:text-lg"
+                      color={theme ? "blue-gray" : "white"}
+                      className="font-normal "
                     >
                       {index + 1}
                     </Typography>
@@ -91,8 +92,8 @@ const CartItemsCC = () => {
                       <Typography
                         as={Link}
                         variant="small"
-                        color="blue-gray"
-                        className="font-bold text-xs lg:text-lg"
+                        color={theme ? "blue-gray" : "white"}
+                        className="font-bold "
                         href={`/product/${id}`}
                       >
                         {title}
@@ -103,8 +104,8 @@ const CartItemsCC = () => {
                   <td className={classes}>
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-normal text-xs lg:text-lg"
+                      color={theme ? "blue-gray" : "white"}
+                      className="font-normal "
                     >
                       EGP{" "}
                       {(price - (discountPercentage * price) / 100).toFixed(2)}
@@ -139,11 +140,14 @@ const CartItemsCC = () => {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal text-xs lg:text-lg"
+                      className="font-normal "
                     >
                       EGP{" "}
-                      {(price - (discountPercentage * price) / 100).toFixed(2) *
-                        quantity}
+                      {(
+                        (price - (discountPercentage * price) / 100).toFixed(
+                          2
+                        ) * quantity
+                      ).toFixed(2)}
                     </Typography>
                   </td>
 
@@ -154,7 +158,7 @@ const CartItemsCC = () => {
                         size="sm"
                         onClick={() => dispatch(delItem({ item }))}
                       >
-                        <TbTrash className="text-lg" />
+                        <TbTrash className="text-lg text-black dark:text-thirdClr" />
                       </IconButton>
                     </Tooltip>
                   </td>

@@ -26,14 +26,14 @@ const cartSlice = createSlice({
     inc: (state, { payload: { item } }) => {
       let findItem = state.cartItems.find((cartItem) => cartItem.id == item.id);
 
-      findItem += 1;
+      findItem.quantity += 1;
     },
 
     //decrement quantity
     dec: (state, { payload: { item } }) => {
       let findItem = state.cartItems.find((cartItem) => cartItem.id == item.id);
 
-      findItem -= 1;
+      findItem.quantity -= 1;
     },
 
     //delete item
