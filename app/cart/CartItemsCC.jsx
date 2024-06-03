@@ -7,10 +7,10 @@ import {
   Tooltip,
   Button,
   ButtonGroup,
+  Card,
 } from "@material-tailwind/react";
 import { TbTrash } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { dec, delItem, inc } from "@/redux-system/slices/cartSlice";
@@ -31,7 +31,7 @@ const CartItemsCC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="px-12">
       <Card className="h-full w-full  bg-white dark:bg-forthClr">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
