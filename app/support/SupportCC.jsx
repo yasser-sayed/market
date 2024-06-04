@@ -55,7 +55,7 @@ const SupportCC = () => {
 
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center gap-8 text-center ">
-      <Typography variant="h3" color="blue">
+      <Typography variant="h3" className="text-mainclr dark:text-secClr">
         Contact with the rsa Market Website developer!
       </Typography>
 
