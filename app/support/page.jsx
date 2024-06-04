@@ -1,4 +1,5 @@
 import React from "react";
+import SupportCC from "./SupportCC";
 
 export const metadata = {
   title: "rsa support",
@@ -6,7 +7,11 @@ export const metadata = {
 };
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <div className="min-h-[80vh]">
+      <SupportCC />
+    </div>
+  );
 };
 
 export default page;
